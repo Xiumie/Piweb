@@ -1,0 +1,263 @@
+﻿$def with(wnum,psnum,raminfo,rominfo,cputemp,cpuuse,ramuse,romuse)
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pi</title>
+	
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="/static/assets/materialize/css/materialize.min.css" media="screen,projection" />
+    <!-- Bootstrap Styles-->
+    <link href="/static/assets/css/bootstrap.css" rel="stylesheet" />
+    <!-- FontAwesome Styles-->
+    <link href="/static/assets/css/font-awesome.css" rel="stylesheet" />
+    <!-- Morris Chart Styles-->
+    <link href="/static/assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
+    <!-- Custom Styles-->
+    <link href="/static/assets/css/custom-styles.css" rel="stylesheet" />
+    <!-- Google Fonts-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" href="/static/assets/js/Lightweight-Chart/cssCharts.css"> 
+</head>
+
+<body>
+    <div id="wrapper">
+
+		<div id="page-wrapper">
+		  <div class="header"> 
+                        <h1 class="page-header">
+                            树莓派状态
+                        </h1>
+									
+		</div>
+            <div id="page-inner">
+
+			
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+					
+						<div class="card horizontal cardIcon waves-effect waves-dark">
+						<div class="card-image red">
+						<i class="fa fa-eye fa-5x"></i>
+						</div>
+						<div class="card-stacked">
+						<div class="card-content">
+						<h3>$wnum</h3> 
+						</div>
+						<div class="card-action">
+						<strong> 连接数</strong>
+						</div>
+						</div>
+						</div>
+	 
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+					
+						<div class="card horizontal cardIcon waves-effect waves-dark">
+						<div class="card-image orange">
+						<i class="fa fa-shopping-cart fa-5x"></i>
+						</div>
+						<div class="card-stacked">
+						<div class="card-content">
+						<h3>$psnum</h3> 
+						</div>
+						<div class="card-action">
+						<strong> 任务数</strong>
+						</div>
+						</div>
+						</div> 
+                    </div>
+                    
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+					
+							<div class="card horizontal cardIcon waves-effect waves-dark">
+						<div class="card-image blue">
+						<i class="fa fa-comments fa-5x"></i>
+						</div>
+						<div class="card-stacked">
+						<div class="card-content">
+						<h3>$raminfo</h3> 
+						</div>
+						<div class="card-action">
+						<strong> RAM</strong>
+						</div>
+						</div>
+						</div> 
+						 
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+					
+					<div class="card horizontal cardIcon waves-effect waves-dark">
+						<div class="card-image">
+						<i class="fa fa-users fa-5x"></i>
+						</div>
+						<div class="card-stacked">
+						<div class="card-content">
+						<h3>$rominfo</h3> 
+						</div>
+						<div class="card-action">
+						<strong> 内存</strong>
+						</div>
+						</div>
+						</div> 
+						 
+                    </div>
+                </div>
+			
+                <!-- /. ROW  --> 
+		<div class="row">
+			<div class="col-xs-12 col-sm-6 col-md-3"> 
+					<div class="card-panel text-center">
+						<h4>CPU温度</h4>
+						<div class="easypiechart" id="easypiechart-blue" data-percent="$cputemp" ><span class="percent">$cputemp℃</span>
+						</div> 
+					</div>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-3"> 
+					<div class="card-panel text-center">
+						<h4>CPU使用率</h4>
+						<div class="easypiechart" id="easypiechart-red" data-percent="$cpuuse" ><span class="percent">$cpuuse%</span>
+						</div>
+					</div>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-3"> 
+					<div class="card-panel text-center">
+						<h4>RAM</h4>
+						<div class="easypiechart" id="easypiechart-teal" data-percent="$ramuse" ><span class="percent">$ramuse%</span>
+						</div> 
+					</div>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-3"> 
+					<div class="card-panel text-center">
+						<h4>内存</h4>
+						<div class="easypiechart" id="easypiechart-orange" data-percent="$romuse" ><span class="percent">$romuse%</span>
+						</div>
+					</div>
+			</div> 
+		</div><!--/.row-->
+			
+
+				
+				
+				<div class="row">
+				<div class="col-md-12">
+				
+					</div>		
+				</div> 	
+                <!-- /. ROW  -->
+
+	   
+				
+				
+				
+                <div class="row">
+                    <div class="col-md-4 col-sm-12 col-xs-12">
+						<div class="card"><div class="card-action">
+					  <b>快捷任务</b>
+					</div>
+					<div class="card-image">
+					  <div class="collection">
+                            <a href="/sys?name=ps" class="collection-item">ps -aux<span class="new badge red" data-badge-caption="red">A</span></a>
+                            <a href="/start?name=IPProxy.py" class="collection-item">代理爬虫 8000端口<span class="new badge blue" data-badge-caption="blue">B</span></a>
+                            <a href="http://10.0.0.5:8000" class="collection-item"><span class="new badge">4</span>访问8000端口</a>
+                            <a href="/start?name=key.py" class="collection-item"><span class="badge">C</span>按键扫描程序</a>
+                            <a href="/start?name=youmzi2.py" class="collection-item">妹子图爬虫<span class="new badge blue" data-badge-caption="blue">4</span></a>
+                            <a href="#!" class="collection-item"><span class="badge">14</span>Alan</a>
+                            <a href="/sys?name=restart" class="collection-item">重启<span class="new badge" data-badge-caption="custom caption">1</span></a>
+                            <a href="/sys?name=shutdown" class="collection-item">关机<span class="badge" data-badge-caption="custom caption">2</span></a>
+                            <a href="/sys?name=cancel" class="collection-item">取消<span class="badge" data-badge-caption="custom caption">4</span></a>
+						</div>
+					</div> 
+					
+					</div>	  
+
+                    </div>
+                    <div class="col-md-8 col-sm-12 col-xs-12">
+	<div class="card">
+	<div class="card-action">
+					  <b>User List</b>
+					</div>
+					<div class="card-image">
+					  <ul class="collection">
+    <li class="collection-item avatar">
+      <i class="material-icons circle green">insert_chart</i>
+      <span class="title">Title</span>
+      <p>First Line <br>
+         Second Line
+      </p>
+      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+    </li>
+    <li class="collection-item avatar">
+      <i class="material-icons circle">folder</i>
+      <span class="title">Title</span>
+      <p>First Line <br>
+         Second Line
+      </p>
+      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+    </li>
+    <li class="collection-item avatar">
+      <i class="material-icons circle green">insert_chart</i>
+      <span class="title">Title</span>
+      <p>First Line <br>
+         Second Line
+      </p>
+      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+    </li>
+    <li class="collection-item avatar">
+      <i class="material-icons circle red">play_arrow</i>
+      <span class="title">Title</span>
+      <p>First Line <br>
+         Second Line
+      </p>
+      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+    </li>
+  </ul>
+					 </div>  
+					</div>	 
+					
+                       
+
+                    </div>
+                </div>
+                <!-- /. ROW  -->
+
+				<footer><p style="text-align:center">Copyright &copy; 2017.Company name All rights reserved.</p>
+				
+        
+				</footer>
+            </div>
+            <!-- /. PAGE INNER  -->
+        </div>
+        <!-- /. PAGE WRAPPER  -->
+    </div>
+    <!-- /. WRAPPER  -->
+    <!-- JS Scripts-->
+    <!-- jQuery Js -->
+    <script src="/static/assets/js/jquery-1.10.2.js"></script>
+	
+	<!-- Bootstrap Js -->
+    <script src="/static/assets/js/bootstrap.min.js"></script>
+	
+	<script src="/static/assets/materialize/js/materialize.min.js"></script>
+	
+    <!-- Metis Menu Js -->
+    <script src="/static/assets/js/jquery.metisMenu.js"></script>
+    <!-- Morris Chart Js -->
+    <script src="/static/assets/js/morris/raphael-2.1.0.min.js"></script>
+    <script src="/static/assets/js/morris/morris.js"></script>
+	
+	
+	<script src="/static/assets/js/easypiechart.js"></script>
+	<script src="/static/assets/js/easypiechart-data.js"></script>
+	
+	 <script src="/static/assets/js/Lightweight-Chart/jquery.chart.js"></script>
+	
+    <!-- Custom Js -->
+    <script src="/static/assets/js/custom-scripts.js"></script> 
+ 
+
+</body>
+
+</html>
