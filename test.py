@@ -13,5 +13,7 @@ if __name__ == "__main__":
     res = os.popen('uptime')
     s = res.read()
     print s
-    lis = s.split()
-    print lis
+    lis = s.split(',', 2)
+    print lis[0].split('up')
+    for li in lis:
+        print li.split()

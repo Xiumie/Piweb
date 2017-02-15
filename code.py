@@ -15,11 +15,11 @@ render = web.template.render('/home/pi/pywb/myweb/templates')
 class index:
     def GET(self):
         uptimeres = os.popen('uptime').read()
-        lis = uptimeres.split()
+        lis = uptimeres.split(',', 2)
         
         psres = os.popen('ps -ef  | wc -l').read()
         
-        return render.index(lis[3],psres,getPi().RAM_info,getPi().DISK_info,getPi().CPU_temp,getPi().CPU_usage,getPi().RAM_perc,getPi().DISK_perc,lis[0],lis[2])
+        return render.index(lis[1].split()[0],psres,getPi().RAM_info,getPi().DISK_info,getPi().CPU_temp,getPi().CPU_usage,getPi().RAM_perc,getPi().DISK_perc,lis[0].split('up')[0],lis[0].split('up')[1])
         
 class sys:
     def GET(self):
