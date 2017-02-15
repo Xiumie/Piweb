@@ -14,17 +14,12 @@ render = web.template.render('/home/pi/pywb/myweb/templates')
 
 class index:
     def GET(self):
-        res = os.popen('w').readlines()
-        wnum = -2  # 连接数
-        for li in res:
-            wnum = wnum + 1
-            
-        psres = os.popen('ps -aux').readlines()
-        psnum = -1  # 任务数
-        for li in psres:
-            psnum = psnum + 1
+        uptimeres = os.popen('uptime').read()
+        lis = uptimeres.split()
         
-        return render.index(wnum,psnum,getPi().RAM_info,getPi().DISK_info,getPi().CPU_temp,getPi().CPU_usage,getPi().RAM_perc,getPi().DISK_perc)
+        psres = os.popen('ps -ef  | wc -l').read()
+        
+        return render.index(lis[3],psres,getPi().RAM_info,getPi().DISK_info,getPi().CPU_temp,getPi().CPU_usage,getPi().RAM_perc,getPi().DISK_perc,lis[0],lis[2])
         
 class sys:
     def GET(self):

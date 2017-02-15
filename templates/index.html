@@ -1,4 +1,4 @@
-﻿$def with(wnum,psnum,raminfo,rominfo,cputemp,cpuuse,ramuse,romuse)
+﻿$def with(wnum,psnum,raminfo,rominfo,cputemp,cpuuse,ramuse,romuse,nowtime,uptime)
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 
@@ -177,15 +177,15 @@
                     <div class="col-md-8 col-sm-12 col-xs-12">
 	<div class="card">
 	<div class="card-action">
-					  <b>User List</b>
+					  <b>用户信息</b>
 					</div>
 					<div class="card-image">
 					  <ul class="collection">
     <li class="collection-item avatar">
       <i class="material-icons circle green">insert_chart</i>
-      <span class="title">Title</span>
-      <p>First Line <br>
-         Second Line
+      <span class="title">开机时长 $uptime </span>
+      <p> <br>
+        现在时间 $nowtime
       </p>
       <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
     </li>
