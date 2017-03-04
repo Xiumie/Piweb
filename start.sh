@@ -9,4 +9,4 @@ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/gam
 export PATH
 
 cd /home/pi/pywb/myweb
-sudo python code.py
+sudo python code.py 8888

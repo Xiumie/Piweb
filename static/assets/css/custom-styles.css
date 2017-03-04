@@ -572,7 +572,7 @@ top: 0px;
  @media(max-width:480px) {
  #page-wrapper {
 position: relative;
-top: 20px;
+top: 0px;
  }
 .page-header small {
 display: block;
